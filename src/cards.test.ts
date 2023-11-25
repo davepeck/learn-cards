@@ -51,34 +51,34 @@ describe("compareCards()", () => {
     ).toBe(0);
   });
 
-  test("returns -1 if the first card is *lower value* than the second", () => {
+  test("returns negative if the first card is *lower value* than the second", () => {
     expect(
       compareCards(
         { suit: "spades", rank: "king" },
         { suit: "spades", rank: "ace" }
       )
-    ).toBe(-1);
+    ).toBeLessThan(0);
     expect(
       compareCards(
         { suit: "spades", rank: "five" },
         { suit: "hearts", rank: "eight" }
       )
-    ).toBe(-1);
+    ).toBeLessThan(0);
   });
 
-  test("returns 1 if the first card is higher than the second", () => {
+  test("returns positive if the first card is higher than the second", () => {
     expect(
       compareCards(
         { suit: "spades", rank: "ace" },
         { suit: "spades", rank: "king" }
       )
-    ).toBe(1);
+    ).toBeGreaterThan(0);
     expect(
       compareCards(
         { suit: "hearts", rank: "ace" },
         { suit: "spades", rank: "two" }
       )
-    ).toBe(1);
+    ).toBeGreaterThan(0);
   });
 });
 

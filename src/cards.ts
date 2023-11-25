@@ -69,24 +69,21 @@ export function shuffle(cards: Card[]): Card[] {
 }
 
 /**
- * Compare two cards.
+ * Compare two ranks.
  *
  * Return:
  *
- * -1 if the first card has a *lower* value than the second card
- * 0 if the two cards are equal
- * 1 if the first card has a *higher* value than the second card
+ * A negative number if the first rank has a *lower* value than the second rank
+ * 0 if the two ranks are equal
+ * A positive number if the first rank has a *higher* value than the second rank
  */
+export function compareRanks(rank1: Rank, rank2: Rank): number {
+  return RANKS.indexOf(rank1) - RANKS.indexOf(rank2);
+}
+
+/** Compare two cards. */
 export function compareCards(card1: Card, card2: Card): number {
-  const rank1 = RANKS.indexOf(card1.rank);
-  const rank2 = RANKS.indexOf(card2.rank);
-  if (rank1 < rank2) {
-    return -1;
-  } else if (rank1 > rank2) {
-    return 1;
-  } else {
-    return 0;
-  }
+  return compareRanks(card1.rank, card2.rank);
 }
 
 /** Order cards from *lowest* to *highest* value. */
